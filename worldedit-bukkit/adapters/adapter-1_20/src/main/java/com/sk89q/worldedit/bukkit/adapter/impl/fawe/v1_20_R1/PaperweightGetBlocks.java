@@ -753,7 +753,7 @@ public class PaperweightGetBlocks extends CharGetBlocks implements BukkitGetBloc
                                             nativeTag);
                                     if (entityTagMap.containsKey("Leash")) {
                                         var leashTag = (net.minecraft.nbt.CompoundTag) adapter.fromNative(
-                                                entityTagMap.get("Leash")) ;
+                                                entityTagMap.get("Leash"));
                                         final LeashFenceKnotEntity leashEntity = leashRef.get(NbtUtils.readBlockPos(leashTag));
                                         if (leashEntity != null) {
                                             tag.put("Leash", NbtUtils.writeBlockPos(leashEntity.pos));
@@ -767,11 +767,16 @@ public class PaperweightGetBlocks extends CharGetBlocks implements BukkitGetBloc
                                     entity.setUUID(nativeTag.getUUID());
                                     if (entity instanceof LeashFenceKnotEntity leashFenceKnotEntity) {
                                         var leashTag = (net.minecraft.nbt.CompoundTag) adapter.fromNative(
-                                                entityTagMap.get("OldPos")) ;
+                                                entityTagMap.get("OldPos"));
                                         if (leashTag != null) {
-                                            leashRef.put(new BlockPos(leashTag.getInt("X"), leashTag.getInt("Y"),
-                                                            leashTag.getInt("Z")),
-                                                    leashFenceKnotEntity);
+                                            leashRef.put(
+                                                    new BlockPos(
+                                                            leashTag.getInt("X"),
+                                                            leashTag.getInt("Y"),
+                                                            leashTag.getInt("Z")
+                                                    ),
+                                                    leashFenceKnotEntity
+                                            );
                                         }
                                     }
                                     if (!nmsWorld.addFreshEntity(entity, CreatureSpawnEvent.SpawnReason.CUSTOM)) {
