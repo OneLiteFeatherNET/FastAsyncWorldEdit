@@ -759,9 +759,9 @@ public class PaperweightGetBlocks extends CharGetBlocks implements BukkitGetBloc
                                     if (entityTagMap.containsKey("Leash")) {
                                         var leashTag = (net.minecraft.nbt.CompoundTag) adapter.fromNative(
                                                 entityTagMap.get("Leash")) ;
-                                        final LeashFenceKnotEntity leashEntity = leashRef.get(NbtUtils.readBlockPos(leashTag));
+                                        final LeashFenceKnotEntity leashEntity = leashRef.get(NbtUtils.readBlockPos(leashTag, "Leash"));
                                         if (leashEntity != null) {
-                                            tag.put("Leash", NbtUtils.writeBlockPos(leashEntity.pos));
+                                            tag.put("Leash", NbtUtils.writeBlockPos(leashEntity.getPos()));
                                         }
                                     }
                                     for (final String name : Constants.NO_COPY_ENTITY_NBT_FIELDS) {
